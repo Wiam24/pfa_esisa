@@ -1,5 +1,7 @@
 # " Système de Détection de Fraude par Carte de Crédit "
 
+Implémentation d'un système de détection de fraude utilisant des techniques d'apprentissage automatique pour identifier les transactions frauduleuses sur les cartes de crédit.
+
 ## Projet en cours de réalisation par : 
 
 ● Zineb Doukkali         
