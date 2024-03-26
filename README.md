@@ -1,15 +1,15 @@
 # Détection de fraude
 
 ## Projet en cours de réalisation par: 
-Zineb Doukkali ,
 
-Wiam BEL MEHDI ,
+● Zineb Doukkali   (Groupe B)
 
-Younes BEL MEHDI . 
+● Wiam BEL MEHDI   (Groupe B)
 
-On est les trois du groupe B
+● Younes BEL MEHDI (Groupe B)
 
 ## Fonctionnalités proposé :
+
 • En tant qu'utilisateur, je peux pouvoir personnaliser les paramètres de détection de fraude pour mieux correspondre à mes habitudes d'achat et réduire les faux positifs.
 
 • En tant qu'utilisateur, je peux avoir accès à des rapports et des analyses sur l'activité de ma carte de crédit pour mieux comprendre les tendances et les risques potentiels.
