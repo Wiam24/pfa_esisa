@@ -2,11 +2,17 @@
 
 ## Projet en cours de réalisation par: 
 
-● Zineb Doukkali         (Groupe B)
+● Zineb Doukkali         
 
-● Wiam BEL MEHDI         (Groupe B)
+(Groupe B)
 
-● Younes BEL MEHDI       (Groupe B)
+● Wiam BEL MEHDI         
+
+(Groupe B)
+
+● Younes BEL MEHDI       
+
+(Groupe B)
 
 ## Fonctionnalités proposé :
 
