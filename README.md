@@ -1,6 +1,6 @@
 # Détection de fraude
 
-## Projet en cours de réalisation par: 
+## Projet en cours de réalisation par : 
 
 ● Zineb Doukkali         
 
@@ -39,7 +39,7 @@
 
 • pandas pour la manipulation des données.
 
-## Domaine technologique:
+## Domaine technologique :
 Machine Learning, 
 
 
