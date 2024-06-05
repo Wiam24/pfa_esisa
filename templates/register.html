@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>Register</title>
+</head>
+<body>
+    <div class="form-container">
+        <div class="login_content">
+            <img src="{{ url_for('static', filename='img/credit4.jpg') }}" alt="login image" class="login_img" />
+
+            <form method="POST" action="{{ url_for('register') }}" class="login_form">
+                <div>
+                    <h1 class="login_title"><span>Register </span> Here!</h1>
+                    <p class="login_description">Welcome! Please register to continue.</p>
+                </div>
+
+                <div>
+                    <div class="login_inputs">
+                        <div>
+                            <label for="username" class="login_label">Username</label>
+                            <input type="text" id="username" name="username" placeholder="Enter your username" required class="login_input" />
+                        </div>
+
+                        <div>
+                            <label for="password" class="login_label">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" required class="login_input" />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="login_button">Register</button>
+
+                    <p class="form-link">
+                        Already have an account?
+                        <a href="{{ url_for('login') }}" class="register-link">Login here</a>
+                    </p>
+                </div>
+            </form>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class="flash-messages">
+                        {% for category, message in messages %}
+                            <li class="{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+</html>

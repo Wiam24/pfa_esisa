@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+
+    <title>About</title>
+    
+  </head>
+  <body>
+    <header class="header" id="header">
+      <nav class="nav">
+        <ul class="nav_list">
+          <li class="nav_item">
+            <a href="{{ url_for('home') }}" class="nav_link">Fraud Detection</a>
+            <!-- <a href="{{ url_for('home') }}" class="nav_link">Home</a> -->
+          </li>
+          <li class="nav_item">
+            <a href="/dashboard" class="nav_link">Dashboard</a>
+          </li>
+          <li class="nav_item">
+            <a href="{{ url_for('about') }}" class="nav_link">About</a>
+          </li>
+          <li class="nav_item">
+            <a href="{{ url_for('team') }}" class="nav_link">Team Members</a>
+          </li>
+          <li class="nav_item logout-btn">
+            <a href="{{ url_for('logout') }}" class="nav_link">Logout</a>          
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="about-container">
+      <div class="about">
+        <h1>About - Credit Card Fraud Detection</h1>
+
+        <hr />
+
+        <p>
+          Cette documentation fournit un aperçu du script Python pour construire et évaluer un modèle de détection de fraude en utilisant un ensemble de classificateurs d'apprentissage automatique. Le script lit les données des clients à partir d'un fichier CSV, les prétraite, entraîne un modèle d'ensemble et évalue ses performances.
+        </p>
+
+        <div class="about_img">
+            <img class="about-img" src="/static/img/credit3.jpg" alt="">
+        </div> 
+
+        <hr />
+
+        <h2>Table des matières :</h2>
+        <ul>
+          <li>Prérequis</li>
+          <li>Chargement et prétraitement des données</li>
+          <li>Visualisation des données</li>
+          <li>Construction et entraînement du modèle</li>
+          <li>Évaluation du modèle</li>
+          <li>Courbe ROC et AUC</li>
+          <li>Sérialisation du modèle</li>
+        </ul>
+
+        <h2>
+          Avant d'exécuter le code, assurez-vous d'avoir les bibliothèques suivantes installées :
+        </h2>
+        <ul>
+          <li>pandas</li>
+          <li>numpy</li>
+          <li>seaborn</li>
+          <li>matplotlib</li>
+          <li>plotly.express</li>
+          <li>plotly.figure_factory</li>
+          <li>scikit-learn</li>
+        </ul>
+
+        <h4>Chargement et prétraitement des données</h4>
+        <p>
+          Le script charge les données des clients à partir d'un fichier CSV nommé "Customer_Data.csv" en utilisant la bibliothèque Pandas.
+          <br />
+          Le prétraitement des données comprend la gestion des valeurs manquantes, le calcul des scores Z pour la détection de fraude et le marquage des enregistrements potentiellement frauduleux.
+        </p>
+
+        <h4>Visualisation des données</h4>
+        <p>
+          Le script génère des histogrammes pour chaque colonne du jeu de données, colorés par la colonne 'FRAUD_FLAG', afin de visualiser les distributions des données.
+        </p>
+
+        <h4>Construction et entraînement du modèle</h4>
+        <p>
+          Le script construit un modèle d'ensemble en utilisant trois classificateurs : la régression logistique, la forêt aléatoire et AdaBoost. <br />
+          Il utilise OneHotEncoder et ColumnTransformer pour le prétraitement des caractéristiques.
+          <br />
+          Le modèle d'ensemble est construit en utilisant un VotingClassifier avec un vote 'soft'.
+        </p>
+
+        <h4>Évaluation du modèle</h4>
+        <p>
+          Le jeu de données est divisé en ensembles d'entraînement et de test. Le modèle est entraîné sur les données d'entraînement et évalué en utilisant les métriques suivantes : <br />
+          <ul>
+            <li>Précision</li>
+            <li> Matrice de confusion </li>
+            <li>Rapport de classification</li>
+          </ul>
+        </p>
+
+        <h4>Courbe ROC et AUC</h4>
+        <p>
+          Le script calcule la courbe ROC (Receiver Operating Characteristic) et la surface sous la courbe ROC (AUC) pour évaluer les performances du modèle à distinguer les cas de fraude des non-fraude.
+        </p>
+
+        <h4>Sérialisation du modèle</h4>
+        <p>
+          Le modèle d'ensemble entraîné est sérialisé en utilisant la bibliothèque pickle et enregistré dans un fichier nommé "ensemble_model.pkl".
+        </p>
+
+        <h4>Utilisation</h4>
+        <p>
+          Pour utiliser ce code : <br /> <br>
+
+          Assurez-vous d'avoir les bibliothèques requises installées comme mentionné dans la section "Prérequis". <br />
+          Chargez vos données clients dans un fichier CSV nommé "Customer_Data.csv".
+          <br />
+          Exécutez le script pour prétraiter les données, entraîner le modèle et évaluer ses performances. <br />
+          Le modèle sérialisé peut être chargé et utilisé pour faire des prédictions.
+        </p>
+
+        <h4>Conclusion</h4>
+        <p>
+          Ce script Python fournit une solution complète de détection de fraude en utilisant des techniques d'ensemble d'apprentissage automatique. Il peut servir de point de départ pour développer un système de détection de fraude pour votre cas d'utilisation spécifique. Assurez-vous de le personnaliser davantage pour répondre à vos besoins et à vos données.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
