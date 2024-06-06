@@ -1,0 +1,470 @@
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: hsl(212, 92%, 19%);
+  font-family: "Arial", sans-serif;
+  color: hsl(244, 1%, 30%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+input,
+button {
+  font-family: "Arial", sans-serif;
+  border: none;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== LOGIN FORM ===============*/
+.login_content,
+.login_form,
+.login_inputs {
+  display: grid;
+}
+
+.login_content {
+  position: relative;
+  height: 100vh;
+  align-items: center;
+  justify-content: end;
+}
+
+.login_img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+  object-position: center;
+  opacity: 0.6;
+}
+
+.login_form {
+  width: 425px;
+  height: 450px;
+  position: relative;
+  background-color: hsl(244deg 16% 92% / 92%);
+  border: 2px solid hsla(244, 16%, 92%, 0.75);
+  margin-inline: 1.5rem;
+  row-gap: 1.25rem;
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-right: 5rem;
+}
+
+.login_title {
+  color: hsl(244, 12%, 12%);
+  font-size: 1.55rem;
+  margin-bottom: 0.5rem;
+}
+
+.login_title span {
+  color: hsl(244, 93%, 35%);
+}
+
+.login_description {
+  font-size: 0.813rem;
+}
+
+.login_inputs {
+  row-gap: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.login_label {
+  display: block;
+  color: hsl(244, 12%, 12%);
+  font-size: 0.913rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.login_input {
+  width: 100%;
+  padding: 14px 12px;
+  border-radius: 6px;
+  border: 2px solid hsl(244, 1%, 30%);
+  background-color: hsla(244, 16%, 92%, 0.6);
+  color: hsl(244, 12%, 12%);
+  font-size: 0.813rem;
+  font-weight: 500;
+  transition: border 0.4s;
+}
+
+.login_input::placeholder {
+  color: hsl(244, 1%, 30%);
+}
+
+.login_input:focus,
+.login_input:valid {
+  border: 2px solid hsl(244, 93%, 35%);
+}
+
+.login_button {
+  width: 100%;
+  padding: 14px 2rem;
+  border-radius: 6px;
+  background: linear-gradient(180deg, hsl(244, 93%, 35%), hsl(249, 64%, 47%));
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 6px 24px hsla(244, 75%, 48%, 0.5);
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.login_button:hover {
+  background: linear-gradient(180deg, #000000eb, hsl(249, 64%, 47%));
+}
+
+.login_button-ghost {
+  background: hsla(244, 16%, 92%, 0.6);
+  border: 2px solid hsl(244, 93%, 35%);
+  color: hsl(244, 93%, 35%);
+  box-shadow: none;
+}
+.login_button-ghost:hover {
+  color: #fff;
+  border: none;
+}
+
+.form-link {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.register-link {
+  font-weight: 600;
+  color: hsl(244, 93%, 35%);
+  text-decoration: none;
+}
+.register-link:hover {
+  text-decoration: underline;
+}
+
+/*=============== Header & nav / index page ===============*/
+.header {
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0 15px 20px hsl(0deg 0.43% 29.79% / 10%);
+}
+.nav {
+  height: calc(3.5rem + 1.5rem);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.nav_list {
+  display: flex;
+  column-gap: 4rem;
+  text-align: center;
+  margin-right: 3rem;
+  align-items: center;
+}
+.nav_link {
+  text-transform: uppercase;
+  color: black;
+  position: relative;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+.nav_link:hover {
+  color: #0056b3;
+}
+
+.logout-btn {
+  background: #0056b3;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+.logout-btn .nav_link {
+  color: #fff;
+}
+.logout-btn:hover {
+  background: #013e80;
+}
+
+.nav_link::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 12px;
+  background-color: hsl(226, 72%, 44%);
+  transform: translateX(1.25rem);
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+.container {
+  margin: 7rem 2rem 4rem 2rem;
+}
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.main h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+.main hr {
+  width: 850px;
+  margin-bottom: 1rem;
+}
+.main img {
+  width: 850px;
+}
+
+/* =============== home page =========== */
+.back {
+  padding: 20px;
+  width: 100%;
+  background: transparent;
+  position: fixed;
+  top: 70px;
+  left: 0;
+}
+.back ul li a {
+  color: #fff;
+}
+.home-container {
+  margin: 9rem 4rem 4rem 4rem;
+}
+.home-container hr {
+  margin-bottom: 2rem;
+}
+.home-container form {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.home-head {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style the form labels */
+.home-container label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Style the select dropdown */
+.home-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Style the text input fields */
+.home-container input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Style the buttons */
+.home-container input[type="button"],
+.home-container input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Style the buttons on hover */
+.home-container input[type="button"]:hover,
+.home-container input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Style the prediction result */
+#prediction_result {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Style the prediction text */
+#prediction_result h2 {
+  font-size: 24px;
+  color: #fff;
+}
+
+/* ====================== team page ================== */
+.team-container {
+  margin-top: 6.5rem;
+  margin-bottom: 5rem;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.team-head {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.team-subhead {
+  text-align: center;
+  font-size: 1rem;
+  color: #ececec;
+  margin-bottom: 2rem;
+}
+
+.team_content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 65px;
+  margin-top: 2rem;
+}
+.member {
+  background: #f9f7f7;
+  padding: 35px;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 6px 24px hsl(244deg 55.18% 11.16% / 50%);
+}
+.member img {
+  width: 220px;
+  height: 250px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 2px solid #013e80;
+}
+.member-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+.para1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.para2 {
+  font-size: 1rem;
+  color: rgb(94, 94, 94);
+}
+
+/* =========== about page ============ */
+.about-container {
+  margin: 7rem 4rem 4rem 4rem;
+}
+.about h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+.about hr {
+  /* width: 850px; */
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.about p {
+  color: #ccc;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  line-height: 1.5rem;
+}
+.about h2,
+h4 {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.about h2 {
+  margin-bottom: 1rem;
+}
+.about h4 {
+  margin-bottom: 1rem;
+}
+.about ul {
+  margin-bottom: 1rem;
+}
+.about ul li {
+  color: #ccc;
+  list-style: disc;
+  margin-left: 15px;
+  letter-spacing: 1px;
+  line-height: 1.2rem;
+}
+.about_img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-img {
+  width: 550px;
+  height: 400px;
+  margin-bottom: 1.5rem;
+}
+
+/* Flash messages */
+.flash-messages {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.flash-messages li {
+  background-color: red; /* Background color for error messages */
+  color: white; /* Text color for error messages */
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* Example of a success message style */
+.flash-messages .success {
+  background-color: green;
+  color: white;
+}

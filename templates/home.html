@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <title>Fraud Detection</title>
+  </head>
+  <body>
+    <header class="header" id="header">
+      <nav class="nav">
+        <ul class="nav_list">
+          <li class="nav_item">
+            <a href="{{ url_for('home') }}" class="nav_link">Fraud Detection</a>
+            <!-- <a href="{{ url_for('home') }}" class="nav_link">Home</a> -->
+          </li>
+          <li class="nav_item">
+            <a href="/dashboard" class="nav_link">Dashboard</a>
+          </li>
+          <li class="nav_item">
+            <a href="{{ url_for('about') }}" class="nav_link">About</a>
+          </li>
+          <li class="nav_item">
+            <a href="{{ url_for('team') }}" class="nav_link">Team Members</a>
+          </li>
+          <li class="nav_item logout-btn">
+            <a href="{{ url_for('logout') }}" class="nav_link">Logout</a> 
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <nav class="back">
+      <ul>
+        <li><a href="{{ url_for('index') }}">&lt;&lt; Back</a></li>
+      </ul>
+    </nav>
+
+    <div class="home-container">
+      <h1 class="home-head">Fraud Detection</h1>
+      <form method="POST">
+        <label for="cust_id">Select CUST_ID:</label>
+        <select name="cust_id" id="cust_id">
+          {% for cust_id in df["CUST_ID"] %}
+          <option value="{{ cust_id }}">{{ cust_id }}</option>
+          {% endfor %}
+        </select>
+        <br />
+
+        <!-- Input fields for other features -->
+        <label for="balance">BALANCE:</label>
+        <input type="text" name="balance" id="balance" readonly /><br />
+
+        <label for="balance_frequency">BALANCE_FREQUENCY:</label>
+        <input
+          type="text"
+          name="balance_frequency"
+          id="balance_frequency"
+          readonly
+        /><br />
+
+        <label for="purchases">PURCHASES:</label>
+        <input type="text" name="purchases" id="purchases" readonly /><br />
+
+        <label for="oneoff_purchases">ONEOFF_PURCHASES:</label>
+        <input
+          type="text"
+          name="oneoff_purchases"
+          id="oneoff_purchases"
+          readonly
+        /><br />
+
+        <label for="installments_purchases">INSTALLMENTS_PURCHASES:</label>
+        <input
+          type="text"
+          name="installments_purchases"
+          id="installments_purchases"
+          readonly
+        /><br />
+
+        <label for="cash_advance">CASH_ADVANCE:</label>
+        <input
+          type="text"
+          name="cash_advance"
+          id="cash_advance"
+          readonly
+        /><br />
+
+        <label for="purchases_frequency">PURCHASES_FREQUENCY:</label>
+        <input
+          type="text"
+          name="purchases_frequency"
+          id="purchases_frequency"
+          readonly
+        /><br />
+
+        <label for="oneoff_purchases_frequency"
+          >ONEOFF_PURCHASES_FREQUENCY:</label
+        >
+        <input
+          type="text"
+          name="oneoff_purchases_frequency"
+          id="oneoff_purchases_frequency"
+          readonly
+        /><br />
+
+        <label for="purchases_installments_frequency"
+          >PURCHASES_INSTALLMENTS_FREQUENCY:</label
+        >
+        <input
+          type="text"
+          name="purchases_installments_frequency"
+          id="purchases_installments_frequency"
+          readonly
+        /><br />
+
+        <label for="cash_advance_frequency">CASH_ADVANCE_FREQUENCY:</label>
+        <input
+          type="text"
+          name="cash_advance_frequency"
+          id="cash_advance_frequency"
+          readonly
+        /><br />
+
+        <label for="cash_advance_trx">CASH_ADVANCE_TRX:</label>
+        <input
+          type="text"
+          name="cash_advance_trx"
+          id="cash_advance_trx"
+          readonly
+        /><br />
+
+        <label for="purchases_trx">PURCHASES_TRX:</label>
+        <input
+          type="text"
+          name="purchases_trx"
+          id="purchases_trx"
+          readonly
+        /><br />
+
+        <label for="credit_limit">CREDIT_LIMIT:</label>
+        <input
+          type="text"
+          name="credit_limit"
+          id="credit_limit"
+          readonly
+        /><br />
+
+        <label for="payments">PAYMENTS:</label>
+        <input type="text" name="payments" id="payments" readonly /><br />
+
+        <label for="minimum_payments">MINIMUM_PAYMENTS:</label>
+        <input
+          type="text"
+          name="minimum_payments"
+          id="minimum_payments"
+          readonly
+        /><br />
+
+        <label for="prc_full_payment">PRC_FULL_PAYMENT:</label>
+        <input
+          type="text"
+          name="prc_full_payment"
+          id="prc_full_payment"
+          readonly
+        /><br />
+
+        <label for="tenure">TENURE:</label>
+        <input type="text" name="tenure" id="tenure" readonly /><br />
+
+        <input type="button" value="Fetch Data" id="fetch_data_button" />
+        <input type="submit" value="Predict" />
+      </form>
+    </div>
+
+    <div id="prediction_result">
+      {% if prediction is not none %}
+      <h2>
+        Prediction: {% if prediction == 0 %}Not Fraud{% else %}Fraud{% endif %}
+      </h2>
+      {% endif %}
+    </div>
+    
+    <script>
+      const custIdSelect = document.getElementById("cust_id");
+      const balanceInput = document.getElementById("balance");
+      const balanceFrequencyInput = document.getElementById("balance_frequency");
+      const purchasesInput = document.getElementById("purchases");
+      const oneoffPurchasesInput = document.getElementById("oneoff_purchases");
+      const installmentsPurchasesInput = document.getElementById("installments_purchases");
+      const cashAdvanceInput = document.getElementById("cash_advance");
+      const purchasesFrequencyInput = document.getElementById("purchases_frequency");
+      const oneoffPurchasesFrequencyInput = document.getElementById("oneoff_purchases_frequency");
+      const purchasesInstallmentsFrequencyInput = document.getElementById("purchases_installments_frequency");
+      const cashAdvanceFrequencyInput = document.getElementById("cash_advance_frequency");
+      const cashAdvanceTrxInput = document.getElementById("cash_advance_trx");
+      const purchasesTrxInput = document.getElementById("purchases_trx");
+      const creditLimitInput = document.getElementById("credit_limit");
+      const paymentsInput = document.getElementById("payments");
+      const minimumPaymentsInput = document.getElementById("minimum_payments");
+      const prcFullPaymentInput = document.getElementById("prc_full_payment");
+      const tenureInput = document.getElementById("tenure");
+
+      // Function to update input fields when a new CUST_ID is selected
+      function updateInputFields() {
+          const selectedCustId = custIdSelect.value;
+
+          // Make an AJAX request to Flask backend to fetch data for the selected CUST_ID
+          fetch(`/get_data?cust_id=${selectedCustId}`)
+              .then(response => response.json())
+              .then(data => {
+                  // Update input fields with the fetched data
+                  balanceInput.value = data.BALANCE;
+                  balanceFrequencyInput.value = data.BALANCE_FREQUENCY;
+                  purchasesInput.value = data.PURCHASES;
+                  oneoffPurchasesInput.value = data.ONEOFF_PURCHASES;
+                  installmentsPurchasesInput.value = data.INSTALLMENTS_PURCHASES;
+                  cashAdvanceInput.value = data.CASH_ADVANCE;
+                  purchasesFrequencyInput.value = data.PURCHASES_FREQUENCY;
+                  oneoffPurchasesFrequencyInput.value = data.ONEOFF_PURCHASES_FREQUENCY;
+                  purchasesInstallmentsFrequencyInput.value = data.PURCHASES_INSTALLMENTS_FREQUENCY;
+                  cashAdvanceFrequencyInput.value = data.CASH_ADVANCE_FREQUENCY;
+                  cashAdvanceTrxInput.value = data.CASH_ADVANCE_TRX;
+                  purchasesTrxInput.value = data.PURCHASES_TRX;
+                  creditLimitInput.value = data.CREDIT_LIMIT;
+                  paymentsInput.value = data.PAYMENTS;
+                  minimumPaymentsInput.value = data.MINIMUM_PAYMENTS;
+                  prcFullPaymentInput.value = data.PRC_FULL_PAYMENT;
+                  tenureInput.value = data.TENURE;
+                  // Update other input fields similarly
+              });
+      }
+
+      // Add event listener to the select element
+      custIdSelect.addEventListener("change", updateInputFields);
+
+      // Call updateInputFields initially to populate fields for the first CUST_ID
+      updateInputFields();
+  </script>
+  </body>
+</html>

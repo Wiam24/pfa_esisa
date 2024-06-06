@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style.css" />
+
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <title>Home</title>
+  </head>
+  <body>
+    <header class="header" id="header">
+      <nav class="nav">
+        <ul class="nav_list">
+          <li class="nav_item">
+            <a href="{{ url_for('home') }}" class="nav_link">Fraud Detection</a>
+            <!-- <a href="{{ url_for('home') }}" class="nav_link">Home</a> -->
+          </li>
+          <li class="nav_item">
+            <a href="/dashboard" class="nav_link">Dashboard</a>
+          </li>
+          <li class="nav_item">
+            <a href="{{ url_for('about') }}" class="nav_link">About</a>
+          </li>
+          <li class="nav_item">
+            <a href="{{ url_for('team') }}" class="nav_link">Team Members</a>
+          </li>
+          <li class="nav_item logout-btn">
+            <a href="{{ url_for('logout') }}" class="nav_link">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="main">
+        <h1>Credit Card Fraud Detection</h1>
+        <hr />
+        <img src="/static/img/credit3.jpg" />
+      </div>
+    </div>
+  </body>
+</html>
